@@ -1,0 +1,36 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{8FB5E1A0-738C-45C8-9756-9524B5252A82}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="SignalInputProcessingTests.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="SignalInputProcessingTests">
+        <MSBuild Projects="SignalInputProcessingTests.dproj"/>
+    </Target>
+    <Target Name="SignalInputProcessingTests:Clean">
+        <MSBuild Projects="SignalInputProcessingTests.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="SignalInputProcessingTests:Make">
+        <MSBuild Projects="SignalInputProcessingTests.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="SignalInputProcessingTests"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="SignalInputProcessingTests:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="SignalInputProcessingTests:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
