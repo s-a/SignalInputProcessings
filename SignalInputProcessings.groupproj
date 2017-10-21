@@ -6,6 +6,9 @@
         <Projects Include="SignalInputProcessingTests.dproj">
             <Dependencies/>
         </Projects>
+        <Projects Include="GetSignalPeaks.dproj">
+            <Dependencies/>
+        </Projects>
     </ItemGroup>
     <ProjectExtensions>
         <Borland.Personality>Default.Personality.12</Borland.Personality>
@@ -23,14 +26,23 @@
     <Target Name="SignalInputProcessingTests:Make">
         <MSBuild Projects="SignalInputProcessingTests.dproj" Targets="Make"/>
     </Target>
+    <Target Name="GetSignalPeaks">
+        <MSBuild Projects="GetSignalPeaks.dproj"/>
+    </Target>
+    <Target Name="GetSignalPeaks:Clean">
+        <MSBuild Projects="GetSignalPeaks.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="GetSignalPeaks:Make">
+        <MSBuild Projects="GetSignalPeaks.dproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="SignalInputProcessingTests"/>
+        <CallTarget Targets="SignalInputProcessingTests;GetSignalPeaks"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="SignalInputProcessingTests:Clean"/>
+        <CallTarget Targets="SignalInputProcessingTests:Clean;GetSignalPeaks:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="SignalInputProcessingTests:Make"/>
+        <CallTarget Targets="SignalInputProcessingTests:Make;GetSignalPeaks:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>
